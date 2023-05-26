@@ -3,6 +3,9 @@
     padding: 0;
     overflow: hidden;
 }
+body{
+    background: linear-gradient(80deg, #A1AB26, #5BA2C3, #DD55D4)
+}
 
 .buttonContainer{
     position: absolute;

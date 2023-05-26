@@ -15,7 +15,7 @@ function creatDivs(number){
             row.classList.add('row')
             row.style.width = '16px'
             row.style.height = '16px'
-            row.style.border = '1px solid black'
+            row.style.border = '1px solid white'
             column.appendChild(row)
 
             // row.addEventListener('mouseover', () => {
