@@ -8,17 +8,26 @@
     <title>EAS</title>
 </head>
 <body>
+    
     <div class="buttonContainer">
-        <button class="sizeButton" data-size="10">10x10</button>
+        <!-- <button class="sizeButton" data-size="10">10x10</button>
         <button class="sizeButton" data-size="16">16x16</button>
         <button class="sizeButton" data-size="20">20x20</button>
         <button class="sizeButton" data-size="32">32x32</button>
-        <button class="sizeButton" data-size="50">50x50</button>
+        <button class="sizeButton" data-size="50">50x50</button> -->
         <button class="sizeButton" data-size="0">Erase</button>
- </div>
-  
-
+        <button class="sizeButton" data-size="0">Eraser(TODO)</button>
+        <input id="gridShow" class="degrees" type="range" id="angle-slider" min="10" max="50" value="0">
+        <span id="gridOutput">10 x 10</span>
+        <button id="generate">Generate!</button>
+        <span>-OR- Generate with</span>
+        <button class="sizeButton" id="randoColor">Random Colors!</button>
+        
+    </div>
+    
     <div class="gridContainer" id="gridContainer"></div>
+
+    
     <script src="index.js"></script>
 </body>
 </html>

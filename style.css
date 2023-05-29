@@ -3,8 +3,14 @@
     padding: 0;
     overflow: hidden;
 }
+:root{
+    --fontColor: #9D2F30;
+    --niceBackground: #ededed;
+}
 body{
-    background: linear-gradient(80deg, #A1AB26, #5BA2C3, #DD55D4)
+    background-color: var(--niceBackground);
+    height: 100vh;
+    color: var(--fontColor);
 }
 
 .buttonContainer{
@@ -16,15 +22,30 @@ body{
     gap: 15px;
     margin-top: 3em;
     margin-left: 20em;
+    padding: 18px;
 }
 
 button{
+    width: 200px;
     padding: 10px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: var(--fontColor);
+}
+button:hover{
+    box-shadow: inset 0px -4px 10px rgba(12, 76, 89, 0.8);
 }
 
 .gridContainer{
+    position: relative;
+    margin-top: 2em;
+    margin-left: 40em;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    border: 2px solid white;
+    width: fit-content;
+    background-color: antiquewhite;
+    box-shadow: 10px 8px 5px black;
 }
