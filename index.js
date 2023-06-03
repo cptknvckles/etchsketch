@@ -1,9 +1,21 @@
 const gridContainer = document.getElementById('gridContainer')
 const testButton = document.getElementById('button')
-const eraseAll = document.querySelectorAll('.sizeButton')
+const eraseAll = document.getElementById('eraseAll')
+const eraser = document.getElementById('eraser')
 
 //Main grid creation
-//TODO create eraseAll function
+let isDrawing = true
+
+function eraseToggle(){
+    isDrawing = !isDrawing
+  }
+eraser.addEventListener('click', eraseToggle)
+
+eraseAll.addEventListener('click', () =>{
+  gridContainer.innerHTML = ''
+  alert('Created 8px by default')
+  creatDivs(8)
+})
 
 function creatDivs(pixelSize){
     gridContainer.innerHTML = ''
@@ -26,13 +38,15 @@ function creatDivs(pixelSize){
 
             row.addEventListener('mousemove', (e) => {
               if(e.buttons === 1){
-                row.style.backgroundColor = '#6BBABE'
+                if(isDrawing){
+                  row.style.backgroundColor = '#6BBABE'
+                }else{
+                  row.style.backgroundColor = 'antiquewhite'
+                }
               }
             })
-            
-        }
-      
-    }
+          }
+      }
 }
 
 // Rainbow style color, hacky way unfortunately
@@ -49,35 +63,36 @@ function helperFunc(){
     return hex 
 }
 
-
-function creatDivsRandom(number){
-  // gridContainer.innerHTML = ''
-
-  for(let i = 0; i < number; i++){
+function creatDivsRandom(pixelSize){
+  gridContainer.innerHTML = ''
+  gridContainer.style.cursor = 'crosshair'
+  const containerSize = '600px'
+  gridContainer.style.width = containerSize
+  gridContainer.style.height = containerSize
+  const numPixels = Math.floor(parseInt(containerSize) / pixelSize)
+  for(let i = 0; i < numPixels; i++){
       const column = document.createElement('div')
       column.classList.add('column')
       gridContainer.appendChild(column)
 
-      for(let j=0;j < number; j++){
+      for(let j=0;j < numPixels; j++){
           const row = document.createElement('div')
           row.classList.add('row')
-          row.style.width = '16px'
-          row.style.height = '16px'
+          row.style.width = pixelSize + 'px'
+          row.style.height = pixelSize + 'px'
           column.appendChild(row)
           let hex = helperFunc()
-          row.addEventListener('mouseover', () => {
-              row.style.backgroundColor = `${hex}`;
-            });
+          row.addEventListener('mousemove', (e) => {
+            if(e.buttons === 1){
+              row.style.backgroundColor = `${hex}`
+            }
+          })
+          
       }
     
   }
 }
 
-const randoColor = document.getElementById('randoColor')
-randoColor.addEventListener('click', () => {
-   let gridNumber = gridValue.value
-   creatDivsRandom(gridNumber)
-})
 //Slider implimentation
 const gridValue = document.getElementById('gridShow')
 const sizeValue = document.getElementById('pixelSize')
@@ -94,7 +109,15 @@ sizeValue.oninput = function() {
 const generate = document.getElementById('generate')
 
 generate.addEventListener('click', () => {
-    // let gridNumber = gridValue.value
+    generate.style.backgroundColor = '#7D7D7D'
     let pixelNumber = sizeValue.value
     creatDivs(pixelNumber)
 })
+const randoColor = document.getElementById('randoColor')
+
+randoColor.addEventListener('click', () => {
+  randoColor.style.backgroundColor = '#7D7D7D'
+  let pixelNumber = sizeValue.value
+  creatDivsRandom(pixelNumber)
+})
+// box-shadow: inset -4px -2px 2px white;

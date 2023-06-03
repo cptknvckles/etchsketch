@@ -6,9 +6,11 @@
 :root{
     --fontColor: #9D2F30;
     --niceBackground: #ededed;
+    --windowsBackground: #1F8080;
+    --buttonPressedShadow: #C2C2C2;
 }
 body{
-    background-color: var(--niceBackground);
+    background-color: var(--windowsBackground);
     height: 100vh;
     color: var(--fontColor);
 }
@@ -23,19 +25,19 @@ body{
     margin-top: 3em;
     margin-left: 20em;
     padding: 18px;
+    border: 2px solid white;
+    box-shadow: -10px 8px 5px black;
+    background-color: antiquewhite;
 }
 
 button{
     width: 200px;
     padding: 10px;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    background-color: var(--fontColor);
+    color: black;
+    background-color: #C2C2C2;
+    
 }
-button:hover{
-    box-shadow: inset 0px -4px 10px rgba(12, 76, 89, 0.8);
-}
+
 
 .gridContainer{
     position: relative;
