@@ -8,8 +8,10 @@ let isDrawing = true
 
 function eraseToggle(){
     isDrawing = !isDrawing
+    eraser.textContent = isDrawing ? 'Eraser Off' : 'Eraser On'
   }
 eraser.addEventListener('click', eraseToggle)
+
 
 eraseAll.addEventListener('click', () =>{
   gridContainer.innerHTML = ''
@@ -39,7 +41,7 @@ function creatDivs(pixelSize){
             row.addEventListener('mousemove', (e) => {
               if(e.buttons === 1){
                 if(isDrawing){
-                  row.style.backgroundColor = '#6BBABE'
+                  row.style.backgroundColor = 'black'
                 }else{
                   row.style.backgroundColor = 'antiquewhite'
                 }
@@ -84,14 +86,17 @@ function creatDivsRandom(pixelSize){
           let hex = helperFunc()
           row.addEventListener('mousemove', (e) => {
             if(e.buttons === 1){
-              row.style.backgroundColor = `${hex}`
+              if(isDrawing){
+                row.style.backgroundColor = `${hex}`
+              }else{
+                row.style.backgroundColor = 'antiquewhite'
+              }
             }
           })
-          
-      }
-    
-  }
+        }
+    }
 }
+
 
 //Slider implimentation
 const gridValue = document.getElementById('gridShow')
@@ -104,7 +109,7 @@ const pixelOutput = document.getElementById('pixelOutput')
 // }
 
 sizeValue.oninput = function() {
-  pixelOutput.innerHTML = `${this.value}px`
+  pixelOutput.innerHTML = `Size: ${this.value}px`
 }
 const generate = document.getElementById('generate')
 
