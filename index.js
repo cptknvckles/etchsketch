@@ -43,7 +43,7 @@ function creatDivs(pixelSize){
                 if(isDrawing){
                   row.style.backgroundColor = 'black'
                 }else{
-                  row.style.backgroundColor = 'antiquewhite'
+                  row.style.backgroundColor = 'white'
                 }
               }
             })
@@ -89,7 +89,7 @@ function creatDivsRandom(pixelSize){
               if(isDrawing){
                 row.style.backgroundColor = `${hex}`
               }else{
-                row.style.backgroundColor = 'antiquewhite'
+                row.style.backgroundColor = 'white'
               }
             }
           })

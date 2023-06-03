@@ -1,3 +1,5 @@
+@import url(//db.onlinewebfonts.com/c/d8a3c95906aec0c2483082a82e72cb40?family=WanderlustShine-Regular);
+
 *{
     margin: 0;
     padding: 0;
@@ -10,7 +12,7 @@
     --buttonPressedShadow: #C2C2C2;
 }
 body{
-    background-color: var(--windowsBackground);
+    background: linear-gradient(135deg, #41D9C5, #D3C4EF, #DF9FF3);
     height: 100vh;
     color: var(--fontColor);
 }
@@ -25,8 +27,9 @@ body{
     margin-top: 3em;
     margin-left: 20em;
     padding: 18px;
-    border: 2px solid white;
-    box-shadow: -10px 8px 5px black;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: -10px 8px 5px whitesmoke;
     background-color: antiquewhite;
 }
 
@@ -46,10 +49,47 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid white;
+    border: 2px solid black;
     width: fit-content;
-    background-color: antiquewhite;
-    box-shadow: 10px 8px 5px black;
+    background-color: white;
+    box-shadow: 10px 10px 8px #FDF8C9;
     width: 600px;
     height: 600px;
 }
+
+.titleSection{
+    position: relative;
+    margin-top: -8em;
+    margin-left: 20em;
+    font-family: 'WanderlustShine-Regular', cursive;
+    font-size: 4em;
+
+}
+
+footer {
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+  }
+  .footerText{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    margin-top: 1em;
+    font-size: 24px;
+  }
+  @keyframes glowing {
+    0% {
+      box-shadow: 0 0 10px #FDF8C9; /* Initial box shadow */
+    }
+    50% {
+      box-shadow: 0 0 20px #FDF8C9, 0 0 60px #FDF8C9; /* Glowing effect */
+    }
+    100% {
+      box-shadow: 0 0 10px #FDF8C9; /* Back to the initial box shadow */
+    }
+  }
