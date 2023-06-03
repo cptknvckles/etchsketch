@@ -1,37 +1,41 @@
 const gridContainer = document.getElementById('gridContainer')
 const testButton = document.getElementById('button')
-const sizeButtons = document.querySelectorAll('.sizeButton')
+const eraseAll = document.querySelectorAll('.sizeButton')
 
-// Main grid creation
-sizeButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const size = button.dataset.size;
-    creatDivs(size);
-  });
-})
+//Main grid creation
+//TODO create eraseAll function
 
-function creatDivs(number){
+function creatDivs(pixelSize){
     gridContainer.innerHTML = ''
-    for(let i = 0; i < number; i++){
+    gridContainer.style.cursor = 'crosshair'
+    const containerSize = '600px'
+    gridContainer.style.width = containerSize
+    gridContainer.style.height = containerSize
+    const numPixels = Math.floor(parseInt(containerSize) / pixelSize)
+    for(let i = 0; i < numPixels; i++){
         const column = document.createElement('div')
         column.classList.add('column')
         gridContainer.appendChild(column)
 
-        for(let j=0;j < number; j++){
+        for(let j=0;j < numPixels; j++){
             const row = document.createElement('div')
             row.classList.add('row')
-            row.style.width = '16px'
-            row.style.height = '16px'
+            row.style.width = pixelSize + 'px'
+            row.style.height = pixelSize + 'px'
             column.appendChild(row)
-            row.addEventListener('mouseover', () => {
-              row.style.backgroundColor = '#6BBABE'
-              
-            });
+
+            row.addEventListener('mousemove', (e) => {
+              if(e.buttons === 1){
+                row.style.backgroundColor = '#6BBABE'
+              }
+            })
+            
         }
       
     }
 }
-// Rainbow style color, hacky way need to update 
+
+// Rainbow style color, hacky way unfortunately
 let num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']
 function getRandomNumber(){
     return Math.floor(Math.random() * num.length)
@@ -47,7 +51,7 @@ function helperFunc(){
 
 
 function creatDivsRandom(number){
-  gridContainer.innerHTML = ''
+  // gridContainer.innerHTML = ''
 
   for(let i = 0; i < number; i++){
       const column = document.createElement('div')
@@ -62,7 +66,7 @@ function creatDivsRandom(number){
           column.appendChild(row)
           let hex = helperFunc()
           row.addEventListener('mouseover', () => {
-              row.style.backgroundColor = `${hex}`; // Remove the background color on mouseout
+              row.style.backgroundColor = `${hex}`;
             });
       }
     
@@ -71,20 +75,26 @@ function creatDivsRandom(number){
 
 const randoColor = document.getElementById('randoColor')
 randoColor.addEventListener('click', () => {
-   let gridNumber = sliderValue.value
+   let gridNumber = gridValue.value
    creatDivsRandom(gridNumber)
 })
 //Slider implimentation
-const sliderValue = document.getElementById('gridShow')
-const sliderValueOutput = document.getElementById('gridOutput')
+const gridValue = document.getElementById('gridShow')
+const sizeValue = document.getElementById('pixelSize')
+const gridValueOutput = document.getElementById('gridOutput')
+const pixelOutput = document.getElementById('pixelOutput')
 
-sliderValue.oninput = function() {
-  sliderValueOutput.innerHTML = `${this.value} x ${this.value}`
+// gridValue.oninput = function() {
+//   gridValueOutput.innerHTML = `${this.value} x ${this.value}`
+// }
+
+sizeValue.oninput = function() {
+  pixelOutput.innerHTML = `${this.value}px`
 }
-
 const generate = document.getElementById('generate')
 
 generate.addEventListener('click', () => {
-    let gridNumber = sliderValue.value
-    creatDivs(gridNumber)
+    // let gridNumber = gridValue.value
+    let pixelNumber = sizeValue.value
+    creatDivs(pixelNumber)
 })

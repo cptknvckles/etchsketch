@@ -10,18 +10,14 @@
 <body>
     
     <div class="buttonContainer">
-        <!-- <button class="sizeButton" data-size="10">10x10</button>
-        <button class="sizeButton" data-size="16">16x16</button>
-        <button class="sizeButton" data-size="20">20x20</button>
-        <button class="sizeButton" data-size="32">32x32</button>
-        <button class="sizeButton" data-size="50">50x50</button> -->
-        <button class="sizeButton" data-size="0">Erase</button>
-        <button class="sizeButton" data-size="0">Eraser(TODO)</button>
-        <input id="gridShow" class="degrees" type="range" id="angle-slider" min="10" max="50" value="0">
-        <span id="gridOutput">10 x 10</span>
+        <span>Pencil Size</span>
+        <input id="pixelSize" class="pixelSize" type="range" id="angle-slider" min="8" max="20" value="0">
+        <span id="pixelOutput">8px</span>
         <button id="generate">Generate!</button>
         <span>-OR- Generate with</span>
         <button class="sizeButton" id="randoColor">Random Colors!</button>
+        <button class="sizeButton" data-size="0">Erase All-broken-</button>
+        <button id="eraser" >Eraser</button>
         
     </div>
     
