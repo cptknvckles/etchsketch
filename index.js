@@ -2,9 +2,12 @@ const gridContainer = document.getElementById('gridContainer')
 const testButton = document.getElementById('button')
 const eraseAll = document.getElementById('eraseAll')
 const eraser = document.getElementById('eraser')
+const colorChoice = document.getElementById('colorPicker')
 
 //Main grid creation
 let isDrawing = true
+let colorPicked = true
+let color = 'black'
 
 function eraseToggle(){
     isDrawing = !isDrawing
@@ -12,12 +15,17 @@ function eraseToggle(){
   }
 eraser.addEventListener('click', eraseToggle)
 
-
 eraseAll.addEventListener('click', () =>{
   gridContainer.innerHTML = ''
   alert('Created 8px by default')
   creatDivs(8)
 })
+
+function colorToggle(){
+  color = this.value
+}
+
+colorChoice.addEventListener('click', colorToggle)
 
 function creatDivs(pixelSize){
     gridContainer.innerHTML = ''
@@ -41,15 +49,18 @@ function creatDivs(pixelSize){
             row.addEventListener('mousemove', (e) => {
               if(e.buttons === 1){
                 if(isDrawing){
-                  row.style.backgroundColor = 'black'
+                  if(colorPicked){
+                    row.style.backgroundColor = color
+                  }
                 }else{
                   row.style.backgroundColor = 'white'
                 }
+                
               }
             })
-          }
-      }
-}
+        }
+    }
+  }         
 
 // Rainbow style color, hacky way unfortunately
 let num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F']
@@ -103,10 +114,6 @@ const gridValue = document.getElementById('gridShow')
 const sizeValue = document.getElementById('pixelSize')
 const gridValueOutput = document.getElementById('gridOutput')
 const pixelOutput = document.getElementById('pixelOutput')
-
-// gridValue.oninput = function() {
-//   gridValueOutput.innerHTML = `${this.value} x ${this.value}`
-// }
 
 sizeValue.oninput = function() {
   pixelOutput.innerHTML = `Size: ${this.value}px`
