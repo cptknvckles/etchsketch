@@ -25,7 +25,7 @@ function colorToggle(){
   color = this.value
 }
 
-colorChoice.addEventListener('click', colorToggle)
+colorChoice.addEventListener('input', colorToggle)
 
 function creatDivs(pixelSize){
     gridContainer.innerHTML = ''
